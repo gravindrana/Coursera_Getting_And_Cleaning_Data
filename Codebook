@@ -1,0 +1,88 @@
+Codebook for Assignment: Getting and Cleaning Data Course Project
+
+Files available with the project:
+    Dir                         File                          Contents
+1.  UCI HAR Dataset             README.txt                    General background on the experiments.
+                                                              Specifically, 30 subjects for 6 activities.
+                                                              There are 2 sets of data - train (70%) and test (30%).
+                                                              Each set has the features (561), the activity, subject for each experiment.
+                                                              No modification or processing of the sensor signal data.
+2.  UCI HAR Dataset             activity_labels.txt           Links activity codes to its description. 6 activities. (e.g.) 1 is WALKING.
+3.  UCI HAR Dataset             features.txt                  List of the 561 features - Names containing paranthesis, dashes, mixed case, typos.
+4.  UCI HAR Dataset             features_info.txt             Description of the features and estimation method to calculate the features.
+5.  UCI HAR Dataset/train       X_train.txt                   Normalized values for the 561 features for the 21 subjects in the train category.
+                                                              Visually inspected by loading and doing a summary that they are within [-1, 1].
+6.  UCI HAR Dataset/train       y_train.txt                   Activity for the features in X_train.txt.
+7.  UCI HAR Dataset/train       subject_train.txt             Subject of the experiment. Numbered from 1 t0 30.
+8.  UCI HAR Dataset/train/Inertial Signals
+                                body_acc_x_train.txt          The 128 body X-axial signals from the accelerometer for the train subjects.
+9.  UCI HAR Dataset/train/Inertial Signals
+                                body_acc_y_train.txt          The 128 body y-axial signals from the accelerometer for the train subjects.
+10. UCI HAR Dataset/train/Inertial Signals
+                                body_acc_z_train.txt          The 128 body z-axial signals from the accelerometer for the train subjects.
+11. UCI HAR Dataset/train/Inertial Signals
+                                body_gyro_x_train.txt         The 128 X-axial signals from the gyrometer for the train subjects.
+12. UCI HAR Dataset/train/Inertial Signals
+                                body_gyro_y_train.txt         The 128 y-axial signals from the gyrometer for the train subjects.
+13. UCI HAR Dataset/train/Inertial Signals
+                                body_gyro_z_train.txt         The 128 z-axial signals from the gyrometer for the train subjects.
+14. UCI HAR Dataset/train/Inertial Signals
+                                total_acc_x_train.txt         The 128 total X-axial signals from the accelerometer for the train subjects.
+15. UCI HAR Dataset/train/Inertial Signals
+                                total_acc_y_train.txt         The 128 total y-axial signals from the accelerometer for the train subjects.
+16. UCI HAR Dataset/train/Inertial Signals
+                                total_acc_z_train.txt         The 128 total z-axial signals from the accelerometer for the train subjects.
+17. UCI HAR Dataset/test        X_test.txt                    Normalized values for the 561 features for the 9 subjects in the test category.
+                                                              Visually inspected by loading and doing a summary that they are within [-1, 1].
+6.  UCI HAR Dataset/test        y_test.txt                    Activity for the features in X_test.txt.
+7.  UCI HAR Dataset/test        subject_test.txt              Subject of the experiment. Numbered from 1 t0 30.
+8.  UCI HAR Dataset/test/Inertial Signals
+                                body_acc_x_test.txt           The 128 body X-axial signals from the accelerometer for the test subjects.
+9.  UCI HAR Dataset/test/Inertial Signals
+                                body_acc_y_test.txt           The 128 body y-axial signals from the accelerometer for the test subjects.
+10. UCI HAR Dataset/test/Inertial Signals
+                                body_acc_z_test.txt           The 128 body z-axial signals from the accelerometer for the test subjects.
+11. UCI HAR Dataset/test/Inertial Signals
+                                body_gyro_x_test.txt          The 128 X-axial signals from the gyrometer for the test subjects.
+12. UCI HAR Dataset/test/Inertial Signals
+                                body_gyro_y_test.txt          The 128 y-axial signals from the gyrometer for the test subjects.
+13. UCI HAR Dataset/test/Inertial Signals
+                                body_gyro_z_test.txt          The 128 z-axial signals from the gyrometer for the test subjects.
+14. UCI HAR Dataset/test/Inertial Signals
+                                total_acc_x_test.txt          The 128 total X-axial signals from the accelerometer for the test subjects.
+15. UCI HAR Dataset/test/Inertial Signals
+                                total_acc_y_test.txt          The 128 total y-axial signals from the accelerometer for the test subjects.
+16. UCI HAR Dataset/test/Inertial Signals
+                                total_acc_z_test.txt          The 128 total z-axial signals from the accelerometer for the test subjects.
+                    
+Processing:
+The features, activities, and subjects are read for the train and test subjects. The activitylabels are also read in to provide a readable 
+description for the activities. Of the 561 features, only 66 are mean and std dev related features. They are identified by mean() and std()
+in their names. They are identified by regular expression but taking care to ignore other instances of mean like meanFreq.
+
+Specific Steps: (features and variables will be used interchangeably)
+1)  Create the working directory, if needed. The default working directory is "./data". Set the working directory.
+2)  Download the zip file from the url given in the assignment.
+3)  Unzip the zip file.
+4)  Ensure that the needed files for processing exist.
+5)  Read features file. This is the list of features with their names that gives an idea of whether they are means, std deviations.
+    Fix minor typos where Body is replicated.
+6)  Get a list of needed variables (mean, std) - indicated by mean(), std(). Please note that the paranthesis symbol has to be escaped.
+7)  Clean the variable names - remove dashes, paranthesis, convert to lowercase.
+8)  Read the activity descriptions.
+9)  Read test data set - features, activity, subject.
+10) Merge test activity data with activity descriptions.
+11) Combine features, activity, subject by using cbind() function.
+12) Repeat steps 9-11 for train data.
+13) Combine test and train data by using rbind() function.
+14) The subject column is integer - change it to a factor.
+15) Write out the combined test and train data.
+16) Group the combined test and train data by activity description and subject.
+17) Summarize the mean for each variable by using summarize_each() function.
+18) Output the summarized dataset.
+
+Note:
+Additional tests could be conducted which ensure that all the normalized values are within -1 and 1.
+All the features are normalized values and therefore do not have any units.
+
+
