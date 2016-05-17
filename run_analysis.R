@@ -211,7 +211,7 @@ testsubjects <- read.table(testsubjectfile, col.names=c("subject"))
 
 ####
 ## Add a readable activity description
-testactivitieswithdescr <- merge(testactivities, activitylabels)
+testactivitieswithdescr <- inner_join(testactivities, activitylabels)
 ####
 
 ####
@@ -239,7 +239,7 @@ trainsubjects <- read.table(trainsubjectfile, col.names=c("subject"))
 
 ####
 ## Add a readable activity description
-trainactivitieswithdescr <- merge(trainactivities, activitylabels)
+trainactivitieswithdescr <- inner_join(trainactivities, activitylabels)
 ####
 
 ####
